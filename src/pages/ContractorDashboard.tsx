@@ -59,10 +59,8 @@ const ContractorDashboard = () => {
   useEffect(() => {
     if (user) {
       fetchProfile();
-    } else if (user === null && !loading) {
-      navigate("/auth");
     }
-  }, [user, navigate]);
+  }, [user]);
 
   const fetchProfile = async () => {
     if (!user) return;
@@ -122,7 +120,7 @@ const ContractorDashboard = () => {
     toast.info("Please select a project first to submit fund updates");
   };
 
-  if (loading || !profile) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -131,6 +129,15 @@ const ContractorDashboard = () => {
         </div>
       </div>
     );
+  }
+
+  if (!user || !session) {
+    navigate("/auth");
+    return null;
+  }
+
+  if (!profile) {
+    return null;
   }
 
   return (
