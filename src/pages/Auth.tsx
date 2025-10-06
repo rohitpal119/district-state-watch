@@ -22,7 +22,7 @@ const Auth = () => {
     email: "",
     password: "",
     fullName: "",
-    role: "district_collector" as "state_official" | "district_collector",
+    role: "contractor" as "state_official" | "district_collector" | "contractor",
     district: ""
   });
 
@@ -118,8 +118,8 @@ const Auth = () => {
                   <Label htmlFor="role">Role</Label>
                   <Select
                     value={formData.role}
-                    onValueChange={(value: "state_official" | "district_collector") =>
-                      setFormData({ ...formData, role: value, district: value === "state_official" ? "" : formData.district })
+                    onValueChange={(value: "state_official" | "district_collector" | "contractor") =>
+                      setFormData({ ...formData, role: value, district: (value === "state_official" || value === "contractor") ? "" : formData.district })
                     }
                   >
                     <SelectTrigger>
@@ -128,6 +128,7 @@ const Auth = () => {
                     <SelectContent>
                       <SelectItem value="state_official">State Official</SelectItem>
                       <SelectItem value="district_collector">District Collector</SelectItem>
+                      <SelectItem value="contractor">Contractor</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
