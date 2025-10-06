@@ -108,6 +108,94 @@ export type Database = {
           },
         ]
       }
+      contractor_communications: {
+        Row: {
+          contractor_id: string
+          created_at: string
+          district_collector_id: string | null
+          id: string
+          message: string
+          project_id: string | null
+          read: boolean
+          sender_type: string
+        }
+        Insert: {
+          contractor_id: string
+          created_at?: string
+          district_collector_id?: string | null
+          id?: string
+          message: string
+          project_id?: string | null
+          read?: boolean
+          sender_type: string
+        }
+        Update: {
+          contractor_id?: string
+          created_at?: string
+          district_collector_id?: string | null
+          id?: string
+          message?: string
+          project_id?: string | null
+          read?: boolean
+          sender_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contractor_communications_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      contractor_fund_updates: {
+        Row: {
+          amount: number
+          contractor_id: string
+          created_at: string
+          description: string
+          id: string
+          project_id: string
+          receipt_url: string | null
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: string
+        }
+        Insert: {
+          amount: number
+          contractor_id: string
+          created_at?: string
+          description: string
+          id?: string
+          project_id: string
+          receipt_url?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+        }
+        Update: {
+          amount?: number
+          contractor_id?: string
+          created_at?: string
+          description?: string
+          id?: string
+          project_id?: string
+          receipt_url?: string | null
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "contractor_fund_updates_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           assigned_district: string | null
@@ -138,11 +226,50 @@ export type Database = {
         }
         Relationships: []
       }
+      project_image_updates: {
+        Row: {
+          contractor_id: string
+          created_at: string
+          description: string | null
+          id: string
+          image_type: string
+          image_url: string
+          project_id: string
+        }
+        Insert: {
+          contractor_id: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_type: string
+          image_url: string
+          project_id: string
+        }
+        Update: {
+          contractor_id?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_type?: string
+          image_url?: string
+          project_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_image_updates_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
           agency: string
           budget_allocated: number
           completion_percentage: number
+          contractor_id: string | null
           created_at: string
           district: string
           end_date: string | null
@@ -157,6 +284,7 @@ export type Database = {
           agency: string
           budget_allocated: number
           completion_percentage?: number
+          contractor_id?: string | null
           created_at?: string
           district: string
           end_date?: string | null
@@ -171,6 +299,7 @@ export type Database = {
           agency?: string
           budget_allocated?: number
           completion_percentage?: number
+          contractor_id?: string | null
           created_at?: string
           district?: string
           end_date?: string | null
@@ -183,15 +312,42 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["user_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["user_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["user_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["user_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      user_role: "state_official" | "district_collector"
+      user_role: "state_official" | "district_collector" | "contractor"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -319,7 +475,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      user_role: ["state_official", "district_collector"],
+      user_role: ["state_official", "district_collector", "contractor"],
     },
   },
 } as const
