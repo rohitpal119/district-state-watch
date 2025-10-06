@@ -30,7 +30,7 @@ import {
 } from "recharts";
 
 interface Profile {
-  role: "state_official" | "district_collector";
+  role: "state_official" | "district_collector" | "contractor";
   assigned_district: string | null;
   email: string;
 }
@@ -77,6 +77,11 @@ const Dashboard = () => {
         .single();
 
       if (error) throw error;
+      
+      if (data.role === "contractor") {
+        navigate("/contractor-dashboard");
+        return;
+      }
       
       setProfile({
         role: data.role,

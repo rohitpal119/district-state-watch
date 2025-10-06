@@ -4,7 +4,7 @@ import Header from "./Header";
 
 interface DashboardLayoutProps {
   children: ReactNode;
-  userRole: "state_official" | "district_collector";
+  userRole: "state_official" | "district_collector" | "contractor";
   userDistrict?: string | null;
   userEmail: string;
 }

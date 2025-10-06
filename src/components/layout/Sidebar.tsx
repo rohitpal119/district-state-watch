@@ -3,17 +3,22 @@ import { Building2, BarChart3, DollarSign, AlertTriangle, MessageSquare } from "
 import { cn } from "@/lib/utils";
 
 interface SidebarProps {
-  userRole: "state_official" | "district_collector";
+  userRole: "state_official" | "district_collector" | "contractor";
 }
 
 const Sidebar = ({ userRole }: SidebarProps) => {
-  const navItems = [
-    { to: "/dashboard", label: "Dashboard", icon: Building2 },
-    { to: "/projects", label: "Projects", icon: BarChart3 },
-    { to: "/fund-flow", label: "Fund Flow", icon: DollarSign },
-    { to: "/alerts", label: "Alerts", icon: AlertTriangle },
-    { to: "/feedback", label: "Citizen Feedback", icon: MessageSquare },
-  ];
+  const navItems = userRole === "contractor" 
+    ? [
+        { to: "/dashboard", label: "Dashboard", icon: Building2 },
+        { to: "/projects", label: "My Projects", icon: BarChart3 },
+      ]
+    : [
+        { to: "/dashboard", label: "Dashboard", icon: Building2 },
+        { to: "/projects", label: "Projects", icon: BarChart3 },
+        { to: "/fund-flow", label: "Fund Flow", icon: DollarSign },
+        { to: "/alerts", label: "Alerts", icon: AlertTriangle },
+        { to: "/feedback", label: "Citizen Feedback", icon: MessageSquare },
+      ];
 
   return (
     <aside className="w-64 bg-card border-r border-border flex flex-col">
@@ -25,7 +30,11 @@ const Sidebar = ({ userRole }: SidebarProps) => {
           <div>
             <h1 className="font-bold text-lg">PM-AJAY</h1>
             <p className="text-xs text-muted-foreground">
-              {userRole === "state_official" ? "State Portal" : "District Portal"}
+              {userRole === "state_official" 
+                ? "State Portal" 
+                : userRole === "district_collector" 
+                ? "District Portal" 
+                : "Contractor Portal"}
             </p>
           </div>
         </div>
