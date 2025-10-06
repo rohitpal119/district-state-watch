@@ -9,60 +9,87 @@ export const SAMPLE_PROJECTS = [
     name: "Rural Road Development Phase 1",
     district: "Mumbai",
     agency: "PWD Maharashtra",
+    contractor: "Kumar Construction Ltd.",
     start_date: "2024-01-15",
     end_date: "2025-06-30",
     status: "ongoing",
     budget_allocated: 5000000,
     fund_utilized: 3200000,
-    completion_percentage: 64
+    completion_percentage: 64,
+    ar_images: ["/placeholder.svg"],
+    progress_updates: [
+      { date: "2024-09-01", description: "Road foundation completed for 5km stretch", image_360: "/placeholder.svg" },
+      { date: "2024-08-15", description: "Site leveling and marking completed", image_360: "/placeholder.svg" }
+    ]
   },
   {
     id: "2",
     name: "School Infrastructure Upgrade",
     district: "Pune",
     agency: "Education Department",
+    contractor: "Singh Builders Pvt. Ltd.",
     start_date: "2024-03-01",
     end_date: "2024-12-31",
     status: "delayed",
     budget_allocated: 2500000,
     fund_utilized: 1800000,
-    completion_percentage: 55
+    completion_percentage: 55,
+    ar_images: ["/placeholder.svg"],
+    progress_updates: [
+      { date: "2024-09-20", description: "Classroom renovation ongoing - 6 rooms completed", image_360: "/placeholder.svg" }
+    ]
   },
   {
     id: "3",
     name: "Water Supply Network Expansion",
     district: "Nagpur",
     agency: "Water Resources Dept",
+    contractor: "Aqua Solutions Infrastructure",
     start_date: "2023-11-01",
     end_date: "2024-10-31",
     status: "completed",
     budget_allocated: 8000000,
     fund_utilized: 7850000,
-    completion_percentage: 100
+    completion_percentage: 100,
+    ar_images: ["/placeholder.svg"],
+    progress_updates: [
+      { date: "2024-10-31", description: "Project completed - 15km pipeline network installed", image_360: "/placeholder.svg" },
+      { date: "2024-09-15", description: "Final testing and commissioning", image_360: "/placeholder.svg" }
+    ]
   },
   {
     id: "4",
     name: "Health Center Modernization",
     district: "Nashik",
     agency: "Health Department",
+    contractor: "Medibuild Construction Co.",
     start_date: "2024-02-01",
     end_date: "2025-01-31",
     status: "ongoing",
     budget_allocated: 3500000,
     fund_utilized: 2100000,
-    completion_percentage: 60
+    completion_percentage: 60,
+    ar_images: ["/placeholder.svg"],
+    progress_updates: [
+      { date: "2024-09-25", description: "OPD wing renovation completed", image_360: "/placeholder.svg" }
+    ]
   },
   {
     id: "5",
     name: "Digital Infrastructure Setup",
     district: "Mumbai",
     agency: "IT Department",
+    contractor: "Tech Solutions India Pvt. Ltd.",
     start_date: "2024-04-01",
     end_date: "2025-03-31",
     status: "ongoing",
     budget_allocated: 4200000,
     fund_utilized: 1500000,
-    completion_percentage: 35
+    completion_percentage: 35,
+    ar_images: ["/placeholder.svg"],
+    progress_updates: [
+      { date: "2024-09-30", description: "Network cabling completed in 3 buildings", image_360: "/placeholder.svg" }
+    ]
   }
 ];
 

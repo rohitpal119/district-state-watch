@@ -139,7 +139,11 @@ const Projects = () => {
               </TableHeader>
               <TableBody>
                 {filteredProjects.map((project) => (
-                  <TableRow key={project.id}>
+                  <TableRow 
+                    key={project.id}
+                    className="cursor-pointer hover:bg-muted/50"
+                    onClick={() => navigate(`/projects/${project.id}`)}
+                  >
                     <TableCell className="font-medium">{project.name}</TableCell>
                     {profile.role === "state_official" && <TableCell>{project.district}</TableCell>}
                     <TableCell>{project.agency}</TableCell>

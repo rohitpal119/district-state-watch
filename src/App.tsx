@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
 import FundFlow from "./pages/FundFlow";
 import Alerts from "./pages/Alerts";
 import Feedback from "./pages/Feedback";
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
           <Route path="/fund-flow" element={<FundFlow />} />
           <Route path="/alerts" element={<Alerts />} />
           <Route path="/feedback" element={<Feedback />} />
